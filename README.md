@@ -13,4 +13,5 @@
 5. Открыть IDE Terminal (VS Code), ввести команды:
    - cp sample.env .env (копирование содержимого из sample в .env)
    - docker compose up -d (собираем образ)
-6. Переходим в Docker, видим образ 'lamp'
+6. Переходим в Docker, перезапускаем образ 'lamp' (php83, phpmyadmin, redis, mysql8)
+7. Переходим по адресу http://localhost:443
