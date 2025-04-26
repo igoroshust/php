@@ -80,3 +80,28 @@ $name = 'Igor';
      define("SITE_NAME", "PHP tutorials");
      echo SITE_NAME; // без доллара!
     
+2. const
+     const NAME = 'John';
+     echo NAME; // без доллара!
+
+Существуют предопределённые константы (например, PHP_VERSION)
+
+#### Константы в массиве (можно с PHP 7+)
+define('COLORS', ['Зелёный', 'Красный', 'Жёлтый']);
+print_r(COLORS);
+
+const NUMBERS = [1, 2, 3];
+print_r(NUMBERS);
+
+### Типы данных
+
+| Тип данных                     | Описание                           | Пример                                                                                      |
+|--------------------------------|------------------------------------|-------------------------------------------|
+| int (integer)                  | Целые числа                        | $age = 2;                                 |
+| float (double)                 | Числа с плавающей точкой           | $price = 10.5;                            |
+| string                         | Строки (текст)                     | $name = "Иван";                           |
+| bool (boolean)                 | Булево значение (true, false)      | $is_admin = true;                         |
+| array                          | Массивы                            | $fruits = ['Apple', 'Pine', 'Banana'];    |
+| object                         | Объекты (экземпляры классов)       | $car = New Car();                         |
+| null                           | Отсутствие значения                | $data = null;                             |
+| resource                       | Внешний ресурс (файл, подключение к БД) | $file = fopen("file.txt", "r");      |
