@@ -498,3 +498,76 @@ $переменная = (условие) ? true : false
             foreach ($food as $item) echo "<li>$item</li>";
             echo "</ul>";
           };
+
+### Функции по работе с массивами
+
+| Функция                     | Описание                           | Пример                                  
+|-----------------------------|------------------------------------|---------------------------------|
+| count()                     | Возвращает количество элементов    | count($arr);                    |
+| array_push()                | ДОБАВЛЯЕТ элемент В КОНЕЦ          | array_push($arr, "Новый");      |
+| array_pop()                 | УДАЛЯЕТ ПОСЛЕДНИЙ элемент          | $last = array_pop($arr);        |
+| array_shift()               | УДАЛЯЕТ ПЕРВЫЙ элемент             | $last = array_pop($arr);        |
+| array_unshift()             | ДОБАВЛЯЕТ элемент В НАЧАЛО         | array_unshift($arr, "Новый");   |
+| in_array()                  | Проверяет наличие значения в массиве  | in_array('Яблоко', $fruits); |
+| array_keys()                | Получает все ключи                  | array_keys($user);  |
+| array_values()              | Получает все значения               | array_values($user);  |
+| array_merge()               | Объединяет массивы              | $new = array_merge($arr1, $arr2);  |
+| array_slice()               | Вырезает часть массива              | array_slice($arr, 1, 2);   |
+| array_reverse()             | Переворачивает массив               | array_reverse($arr);           |
+| implode()                   | Создаёт из списка строку              | $str = implode(', ', $arr);  |
+| explode()                   | Создаёт из строки список | $arr = explode(', ', $str);     |
+
+
+### Функции по работе с массивами (примеры)
+
+Исходный массив
+
+    $cities = ["Москва", "Лондон", "Париж", "Берлин", "Токио"];
+    var_dump($cities);
+
+- count() - подсчёт количества элементов в массиве
+
+      echo count($cities); // 5
+
+- array_push() - добавить элемент В КОНЕЦ
+  
+        array_push($cities, "Сидней");
+        var_dump($cities);
+- array_unshift() - добавить элемент В НАЧАЛО
+
+        array_unshift($cities, "Дублин");
+        var_dump($cities);
+
+- in_array() - проверяет наличие элемента в массиве
+
+        $cityToCheck = "Берлин";
+        if (in_array($cityToCheck, $cities)) {
+            echo "$cityToCheck есть в списке городов.\n";
+        } else {
+            echo "$cityToCheck нет в списке городов.\n";
+        }
+
+- array_merge() - объединение двух массиво в один
+
+        $moreCities = ["Рим", "Барселона", "Амстердам"];
+        $cities = array_merge($cities, $moreCities);
+        var_dump($cities);
+
+- array_slice() - вырезать часть массива
+
+        $subset = array_slice($cities, 1, 3); // массив, индекс с которого начинаем включая его, количество извлекаемых элементов
+        var_dump($subset);
+
+- sort() - сортировка массива по алфавиту (изменяя массив)
+
+        sort($subset);
+        var_dump($subset);
+
+- implode() - преобразование элементов массива в строку
+
+        echo implode(', ', $cities); // Дублин, Москва, Лондон, Париж...
+- explode() - преобразование строки в массив 
+
+        $string = "Дублин, Москва, Париж, Нью-Йорк";
+        $arrayFromString = explode(', ', $string);
+        var_dump($arrayFromString);
