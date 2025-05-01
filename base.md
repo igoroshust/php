@@ -13,6 +13,9 @@ echo (выводим строки с данными или переменные 
 
 Пример конкатенации строк: <br>
 
+      echo 'Hello '. 'from '. 'PHP '. 'by '. $name;
+    
+      // Можно также использовать `,` для echo (не рекомендуется)
       echo 'Hello ', 'from ', 'PHP ', 'by ', $name;
   
 - print, print(); <br>
@@ -566,8 +569,103 @@ $переменная = (условие) ? true : false
 - implode() - преобразование элементов массива в строку
 
         echo implode(', ', $cities); // Дублин, Москва, Лондон, Париж...
+
 - explode() - преобразование строки в массив 
 
         $string = "Дублин, Москва, Париж, Нью-Йорк";
         $arrayFromString = explode(', ', $string);
         var_dump($arrayFromString);
+
+### Функции для фильтрации данных (array_filter)
+array_filter() - фильтрует элементы массива через callback-функцию. <br>
+Она позволяет оставить в массиве только те элементы, которые удовлетворяют определённому условию, заданному в cb-функции. <br>
+
+Синтаксис
+
+    array_filter(array $array, callable|null $callback = null, int $flag = 0): array
+
+- array: исходный массив, который нужно отфильтровать
+- cb (необязательный): функция обратного вызова, применяемая к каждому элементу массива. Если не указана, будут оставлены все элементы, приводящие к true
+- flag (необязательный): определяет передачу значения в cb-функцию. Возможные значения: 
+        - `ARRAY_FILTER_USE_BOTH` - передаёт ключ и значение в cb
+        - `ARRAY_FILTER_USE_KEY` - передаёт только ключ в cb
+
+Пример использования 
+
+        $phones = [
+    [
+        "name" => "iPhone 14 PRO",
+        "color" => "Чёрный",
+        "brand" => "Apple",
+        "price" => 1200,
+        "storage" => "256GB"
+    ],
+    [
+        "name" => "Samsung 4 MAX",
+        "color" => "Белый",
+        "brand" => "Samsung",
+        "price" => 1100,
+        "storage" => "512GB"
+    ],
+    [
+        "name" => "Google Pixel 7",
+        "color" => "Красный",
+        "brand" => "Google",
+        "price" => 900,
+        "storage" => "128GB"
+    ],
+    [
+        "name" => "Xiaomi 13 PRO",
+        "color" => "Синий",
+        "brand" => "Xiaomi",
+        "price" => 800,
+        "storage" => "256GB"
+    ]
+    ];
+
+    // cb-функция будет запускаться по очереди для каждого элемента массива
+    function filterByPrice($item) {
+        // echo $item['price'] . '<br>'; // Получаем цену каждого товара
+        
+        return $item['price'] <= 1000; // true or false
+    
+    }
+    
+    $filtered = array_filter($phones, "filterByPrice");
+    var_dump($filtered);
+        
+Фильтрация массива с использованием cb
+
+    $numbers = [1, 2, 3, 4, 5];
+
+    // CB-функция для фильтрации чётных чисел
+    $evenNumbers = array_filter($numbers, function($number) {
+        return $number % 2 == 0; // оставляем только чётные числа
+    }) 
+
+    print_r($evenNumbers); // Вывод: Array ( [1] => 2 [3] => 4 [5] => 6 )
+
+Фильтрация без использования cb-функций
+
+    $values = [0, 1, 2, false, null, 3, 'hello', ''];
+
+    // Фильтруем массив, оставляя только истинные значения
+    $filteredValues = array_filter($values);
+
+    print_r($filteredValues); // Вывод: Array ( [1] => 1 [2] => 2 [5] => 3 [6] => hello )
+
+Использование флага для передачи ключей
+
+    $array = [
+        'a' => 1,
+        'b' => 2,
+        'c' => 3,
+        'd' => 4,
+    ];
+
+    // Фильтруем массив, оставляя только элементы с чётными ключами
+    $filteredArray = array_filter($array, function($value, $key) {
+        return $key % 2 == 0; // Оставляем только элементы с чётными ключами
+    }, ARRAY_FILTER_USE_BOTH);
+
+    print_r($filteredArray);
