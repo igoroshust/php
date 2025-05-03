@@ -63,3 +63,12 @@
 
     $result = getCurrentYear();
     echo $result;
+
+### Обрезать текст по указанное количество символов, добавив троеточие
+
+    function truncate($text, $value)
+    {
+        return substr($text, 0, $value) . '...';
+    }
+    
+    echo truncate('it works!', 4);
