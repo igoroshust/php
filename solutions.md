@@ -52,3 +52,14 @@
             <h3 class='project__title'><?= $project['title'] ?></h3>
         </a>
     </li>
+
+
+### Написать программу с выводом текущей даты
+
+    function getCurrentYear()
+    {
+        return ((int) substr(date('Y-m-d'), 0, 4));
+    }
+
+    $result = getCurrentYear();
+    echo $result;
