@@ -1,4 +1,4 @@
-### Вывести список постов 
+## Вывести список постов 
 
 Моё решение:
 
@@ -54,7 +54,7 @@
     </li>
 
 
-### Написать программу с выводом текущей даты
+## Написать программу с выводом текущей даты
 
     function getCurrentYear()
     {
@@ -64,7 +64,7 @@
     $result = getCurrentYear();
     echo $result;
 
-### Обрезать текст по указанное количество символов, добавив троеточие
+## Обрезать текст по указанное количество символов, добавив троеточие
 
     function truncate($text, $value)
     {
@@ -72,3 +72,12 @@
     }
     
     echo truncate('it works!', 4);
+
+## Обрезать номер карты
+
+    function getHiddenCard($card_number, $filler=4)
+    {
+        return str_repeat('*', $filler) . substr($card_number, -4);
+    }
+
+    echo getHiddenCard('1234567812345678');
