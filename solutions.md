@@ -123,6 +123,8 @@
 
 ## Реализуйте функцию normalizeUrl(), которая выполняет так называемую нормализацию данных. Она принимает адрес сайта и возвращает его с https:// в начале.
 
+Моё решение:
+
     function normalizeUrl($url) {
         // Удаляем пробелы
         $url = trim($url);
@@ -139,3 +141,16 @@
         return $url;
     }
 
+Решение учителя:
+
+    function normalizeUrl($url)
+    {
+        if (strpos($url, 'http://') === 0) {
+            $domain = substr($url, 7);
+        } elseif (strpos($url, 'https://') === 0) {
+            $domain = substr($url, 8);
+        } else {
+            $domain = $url;
+        }
+
+    return "https://{$domain}";
