@@ -111,3 +111,12 @@
     ];
 
     echo "{$currentDate['day']}.{$currentDate['month']}.{$currentDate['year']}";
+
+
+## Високосный год
+
+    function isLeapYear($year) {
+        return $year % 400 == 0 || ($year % 4 == 0 && $year %100 != 0);
+    }
+    
+    echo isLeapYear('2020') ? 'true' : 'false';
