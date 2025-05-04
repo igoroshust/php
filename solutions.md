@@ -154,3 +154,12 @@
         }
 
     return "https://{$domain}";
+
+## Обратиться к пользователю по имени или никнейму (если нет имени)
+
+    Пример обращения к пользователю по имени или никнейму
+
+    function generateGreeting($name, $nickname)
+    {
+        return $name ? "Hello, {$name}!" : "Hello, {$nickname}!";
+    }
