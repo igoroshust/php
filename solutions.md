@@ -163,3 +163,11 @@
     {
         return $name ? "Hello, {$name}!" : "Hello, {$nickname}!";
     }
+
+С использованием оператора Элвиса
+
+    function generateGreeting($name, $nickname)
+    {
+        $user = $name ?: $nickname;
+        return "Hello, {$user}!";
+    }
