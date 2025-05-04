@@ -81,3 +81,13 @@
     }
 
     echo getHiddenCard('1234567812345678');
+
+## Вывести разницу в возрасте двух людей
+
+    function getAgeDifference(int $birth_year_1, int $birth_year_2): string
+    {
+        return 'The age difference is ' . abs($birth_year_2 - $birth_year_1);
+    }
+    
+    $actual = getAgeDifference(2030, 2002);
+    echo $actual; // The age differense is 18
