@@ -91,3 +91,23 @@
     
     $actual = getAgeDifference(2030, 2002);
     echo $actual; // The age differense is 18
+
+## Вывести отформатированную дату рождения
+
+    function getFormattedBirthday(int $day, int $month, int $year)
+    {
+        return sprintf('%02d-%02d-%d', $day, $month, $year);
+    }
+    
+    $result = getFormattedBirthday(1, 1, 2001);
+    echo $result;
+
+Альтернативный способ:
+
+    $currentDate = [
+        'day' => date('d'),
+        'month' => date('m'),
+        'year' => date('Y')
+    ];
+
+    echo "{$currentDate['day']}.{$currentDate['month']}.{$currentDate['year']}";
