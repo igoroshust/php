@@ -120,3 +120,22 @@
     }
     
     echo isLeapYear('2020') ? 'true' : 'false';
+
+## Реализуйте функцию normalizeUrl(), которая выполняет так называемую нормализацию данных. Она принимает адрес сайта и возвращает его с https:// в начале.
+
+    function normalizeUrl($url) {
+        // Удаляем пробелы
+        $url = trim($url);
+
+        // Проверяем и нормализуем URL
+        // Если не начинается ни с одного из этих префиксов
+        if (!str_starts_with($url, "http://") && !str_starts_with($url, "https://"))         {
+            $url = 'https://' . $url;
+        } elseif (str_starts_with($url, "http://")) {
+            // Если начинается с "http://", заменяем его на "https://"
+            $url = 'https://' . substr($url, 7);
+        }
+
+        return $url;
+    }
+
