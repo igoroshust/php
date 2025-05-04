@@ -171,3 +171,37 @@
         $user = $name ?: $nickname;
         return "Hello, {$user}!";
     }
+
+## Вывести перевернутую строку, если строка начинается с маленькой буквы, и перевёрнутую - в обратном случае. Решить 3 способами (if-else, ternary, elvis)
+
+Первый вариант (if):
+
+    function convertText($text)
+    {
+        if ($text[0] != ctype_upper($text[0])) $text = strrev($text);
+    
+        return $text;
+    }
+    echo convertText('Hello');
+
+Второй вариант (ternary):
+
+    function convertText($text)
+    {
+        return ($text[0] != ctype_upper($text[0])) ? strrev($text): $text; 
+    }
+    
+    echo convertText('hello');
+
+Третий вариант (elvis):
+
+    function convertText($text)
+    {
+        if ($text[0] != ctype_upper($text[0])) {
+            $text = strrev($text) ?: $text; 
+        }
+    
+        return $text;
+    }
+    
+    echo convertText('Hello');
