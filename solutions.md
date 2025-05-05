@@ -292,3 +292,19 @@
     }
 
     echo joinNumbersFromRange(5, 10);
+
+## Калькулятор
+
+    function calculate(string $operator, int $operandOne, int $operandTwo): int {
+      $result = match($operator) {
+        '-' => $operandOne - $operandTwo,
+        '+' => $operandOne + $operandTwo,
+        '/' => $operandOne / $operandTwo,
+        '*' => $operandOne * $operandTwo,
+        default => null
+      };
+      
+      return $result;
+    }
+    
+    echo calculate('-', 3, 10);
