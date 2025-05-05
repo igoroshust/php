@@ -205,3 +205,90 @@
     }
     
     echo convertText('Hello');
+
+## Функция подсчёта суммы значений диапазона
+
+    function printSumNumbers($start, $finish)
+    {
+        $sum = 0;
+        $i = $start;
+
+        while ($i <= $finish) {
+            $sum += $i;
+            $i++;
+        };
+
+        return $sum;
+    }
+
+    echo printSumNumbers(5, 10);
+
+## Функция умножение строки на саму себя указанное количество раз
+
+    function repeat($text, $times)
+    {
+        $result = '';
+        $i = 1;
+
+        while ($i <= $times) {
+            // Каждый раз добавляем строку к результату
+            $result = "{$result}{$text}";
+            $i++;
+        };
+
+        return $result;
+    }
+
+    echo repeat('igor', 5)
+
+## Функция, выводящая символы строки построчно
+
+        function printNameBySymbol($name)
+        {
+            $i = 0;
+
+            while ($i < strlen($name)) {
+                // Обращаемся к символу по индексу
+                print_r("$name[$i]\n");
+                $i++;
+            };
+        }
+
+        echo printNameBySymbol('Arya');
+
+## Функция, переворачивающая строку
+
+        function reverse($str)
+        {
+            $i = 0;
+            // Нейтральный элемент для строк - пустая строка
+            $result = '';
+
+            while ($i < strlen($str)) {
+                $currentChar = $str[$i];
+                // Соединяю в обратном порядке
+                $result = "{$currentChar}{$result}";
+                $i++;
+            }
+
+            return $result;
+        }
+
+        echo reverse('igor');
+
+## Функция, объединяющая числа из диапазона в строку
+
+    function joinNumbersFromRange($start, $end)
+    {
+        $i = $start;
+        $result = '';
+
+        while ($i <= $end) {
+            $result = "{$result}{$i}";
+            $i++;
+        }
+
+        return $result;
+    }
+
+    echo joinNumbersFromRange(5, 10);
