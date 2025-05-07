@@ -308,3 +308,234 @@
     }
     
     echo calculate('-', 3, 10);
+
+## Функция, возвращающая подстроку, начиная с первого символа
+
+    function mysubstr($str, $length)
+    {
+        $index = 0;
+        $result = '';
+
+        while ($index < $length) {
+            $currentChar = $str[$index];
+            $result = "{$result}{$currentChar}";
+            $index++;
+        }
+
+        return $result;
+    }
+
+    $str = 'If I look back I\'m lost';
+
+    echo mysubstr($str, 4);
+
+## Реализуйте функцию-предикат: false, если:
+- Отрицательная длина извлекаемой подстроки
+- Отрицательный заданный индекс
+- Заданный индекс выходит за границу всей строки
+- Длина подстроки в сумме с заданным индексом выходит за границу всей строки
+
+        function isArgumentsForSubstrCorrect($str, $index, $length)
+        {
+            return !($index < 0 || $index >= strlen($str) || ($length < 0 || ($length + $index > strlen($str))));
+        }
+    
+        echo isArgumenstForSubstrCorrect('Sansa Stark', 0, 5);
+
+## Переворот строки через for
+
+    function reverseString($str)
+    {
+        $result = '';
+        
+        for ($i = 0; $i < strlen($str); $i++) {
+            $currentChar = $str[$i];
+            $result = "{$currentChar}{$result}";
+        }
+
+        return $result;
+    }
+
+## Перебор массива через цикл for
+
+    $people = array(
+        array('name' => 'Kalle', 'salt' => 123240),
+        array('name' => 'Pierre', 'salt' => 215863)
+    );
+
+    for ($i = 0, $size = count($people); $i < $size; ++$i) {
+        $people[$i]['salt'] = mt_rand(000000, 999999); // mt_rand - генерируем случайное число
+    }
+
+## Вывести сумму элементов
+
+    function sum($numbers)
+    {
+        $result = 0;
+        for ($i = 0; $i < strlen($numbers); $i++) {
+            $result += (int) $numbers[$i];
+        }
+        return $result;
+    }
+
+    echo sum("12345");
+
+## Написать функцию подсчёта суммы элементов из диапазона
+
+    function sumOfSeries($start, $finish)
+    {
+    $sum = 0;
+    for ($i = $start; $i <= $finish; $i++) {
+        $sum += $i;
+    }
+  
+    return $sum;
+    }
+
+## Итерация по строке
+
+    $str = 'test';
+
+    for ($i = 0; $i < strlen($str); $i++) {
+        echo $str[$i] . '\n';
+    }
+
+## Переворот строку без функции strrev()
+
+    $str = 'asd';
+    $result = '';
+    
+    for ($i = 0; $i < strlen($str); $i++) {
+      $result = "{$str[$i]}{$result}";
+    }
+    
+    echo $result;
+
+## Обратная итерация по строке
+
+    function isPalindrome($str)
+    {
+      $reverse_string = '';
+    
+      for ($i = strlen($str); $i >=0 ; $i--) {
+          $reverse_string .= mb_substr($str, $i, 1);
+      };
+      
+      $reverse_string = trim(str_replace(' ', '', $reverse_string));
+      $str = trim(str_replace(' ', '', $str));
+      
+      echo "Входная строка: $str\n";
+      echo "Ревёрс: $reverse_string\n";
+      
+      return $str == $reverse_string;
+    }
+      
+    
+    echo isPalindrome('шалак') ? 'true' : 'false';
+
+## Итерация по массиву
+
+    $array = ['apple', 'banana', 'cherry'];
+
+    foreach ($array as $element) {
+      echo $element . "\n";
+    }
+
+## Функция по изменению каждого символа в строке
+- Решение ИИ
+
+
+        function invertCase($str) {
+            $result = ''; // Инициализируем пустую строку для результата
+
+        // Проходим по каждому символу строки
+        for ($i = 0; $i < strlen($str); $i++) {
+            $char = $str[$i]; // Получаем текущий символ
+
+        // Проверяем, является ли символ заглавным
+        if (ctype_upper($char)) {
+            // Преобразуем в строчный
+            $result .= strtolower($char);
+        } else {
+            // Преобразуем в заглавный
+            $result .= strtoupper($char);
+        }
+            }
+        
+            return $result; // Возвращаем инвертированную строку
+        }
+
+Пример использования
+
+                $str = 'ПрИвЕт!';
+                $invertedStr = invertCase($str);
+                echo $invertedStr; // пРиВеТ!
+
+- Второе Решение
+
+        function invertCase($text)
+        {
+
+            // BEGIN
+            $len = mb_strlen($text);
+            $result = '';
+            for ($i = 0; $i < $len; $i++) {
+                $symbol = mb_substr($text, $i, 1);
+                $lowerSymbol = mb_strtolower($symbol);
+                if ($symbol === $lowerSymbol) {
+                    $result .= mb_strtoupper($symbol);
+                } else {
+                    $result .= $lowerSymbol;
+                }
+            }
+        
+            return $result;
+            // END
+        }
+        
+        echo invertCase('ПрИвЕт!');
+
+## Перевод timestamp в человекочитаемый формат
+
+    function getCustomDate(string $timestamp): string {
+        $result = date('d/m/Y', $timestamp);
+        return $result;
+    }
+
+    echo getCustomDate(5324352);
+
+## Функция-предикат палиндрома
+
+    function isPalindrome($str)
+    {
+      $reverse_string = '';
+    
+      for ($i = strlen($str); $i >=0 ; $i--) {
+          $reverse_string .= mb_substr($str, $i, 1);
+      };
+      
+      $reverse_string = trim(str_replace(' ', '', $reverse_string));
+      $str = trim(str_replace(' ', '', $str));
+      
+      echo "Входная строка: $str\n";
+      echo "Ревёрс: $reverse_string\n";
+      
+      return $str == $reverse_string;
+    }
+      
+    
+    echo isPalindrome('шалак') ? 'true' : 'false';
+
+## Пример try/catch
+
+    function generateError() {
+    try {
+        // Вызов несуществующей функции
+        nonExistentFunction();
+    } catch (Error $e) {
+        // Обработка ошибки
+        echo "Произошла ошибка: " . $e;
+    }
+    }
+    // Вызов функции
+    generateError();
